@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project was developed in **2018 as part of the final project for a Practical Engineering Diploma in Electronics and Computers** (הנדסאי אלקטרוניקה ומחשבים).
+This project was developed in **2018 as part of the final project for a Practical Engineering Diploma in Electronics and Computers** 
 
 The goal was to design and build a quadcopter with a **custom-developed PID (Proportional–Integral–Derivative) flight stabilization system** and a dedicated wireless remote controller. The project involved integrating multiple Arduino microcontrollers, onboard sensors, wireless communication, and four brushless motors driven by ESCs.
 
