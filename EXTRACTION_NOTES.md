@@ -1,0 +1,3 @@
+Code ranges in original Word document (python-docx paragraph indices, zero-based): controller 1093–1504; Nano 1512–1857; Uno 1859–2041. Heading lines removed. Original Word report remains the authoritative source. Images extracted from word/media; image-to-page mapping not yet reviewed.
+
+PID initialization update: the extracted Nano sketch originally set kp, ki and kd to 0. On request, these were changed to kp=3.55, ki=0.003 and kd=2.05, values documented in the original 2018 project report. These are documented tuning values, not independently verified final-flight settings. The modified sketch has not been compiled or flight-tested.
