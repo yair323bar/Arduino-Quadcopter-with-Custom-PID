@@ -1,17 +1,17 @@
 
 # Arduino Quadcopter with Custom PID Flight Stabilization
 
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
-![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![Embedded Systems](https://img.shields.io/badge/Embedded_Systems-555555?style=flat-square)
-![PID Control](https://img.shields.io/badge/PID_Control-2563EB?style=flat-square)
-![RF Communication](https://img.shields.io/badge/RF_Communication-8B5CF6?style=flat-square)
-![GPS](https://img.shields.io/badge/GPS-16A34A?style=flat-square)
-![I2C](https://img.shields.io/badge/I%C2%B2C-F97316?style=flat-square)
-![SPI](https://img.shields.io/badge/SPI-F97316?style=flat-square)
-![MPU6050](https://img.shields.io/badge/MPU6050-64748B?style=flat-square)
-![Brushless Motors](https://img.shields.io/badge/Brushless_Motors-475569?style=flat-square)
+
+![Arduino](https://img.shields.io/badge/Platform-Arduino-00979D?style=flat-square&labelColor=3D3D3D&logo=arduino&logoColor=white)
+![C](https://img.shields.io/badge/Language-C-64748B?style=flat-square&labelColor=3D3D3D&logo=c&logoColor=white)
+![C++](https://img.shields.io/badge/Language-C++-00599C?style=flat-square&labelColor=3D3D3D&logo=cplusplus&logoColor=white)
+![Embedded](https://img.shields.io/badge/System-Embedded-475569?style=flat-square&labelColor=3D3D3D)
+![PID](https://img.shields.io/badge/Control-Custom_PID-2563EB?style=flat-square&labelColor=3D3D3D)
+![RF](https://img.shields.io/badge/Wireless-nRF24L01-7C3AED?style=flat-square&labelColor=3D3D3D)
+![GPS](https://img.shields.io/badge/Navigation-GPS-16A34A?style=flat-square&labelColor=3D3D3D)
+![I2C](https://img.shields.io/badge/Protocol-I2C-0891B2?style=flat-square&labelColor=3D3D3D)
+![SPI](https://img.shields.io/badge/Protocol-SPI-0891B2?style=flat-square&labelColor=3D3D3D)
+
 
 ## Project Overview
 
