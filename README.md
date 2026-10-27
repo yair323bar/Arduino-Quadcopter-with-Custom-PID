@@ -2,17 +2,15 @@
 # Arduino Quadcopter with Custom PID Flight Stabilization
 
 
-
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
 ![C](https://img.shields.io/badge/C-555555?style=flat-square&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![Embedded](https://img.shields.io/badge/Embedded-Systems-455A64?style=flat-square)
-![PID](https://img.shields.io/badge/PID-Custom-2563EB?style=flat-square)
-![RF](https://img.shields.io/badge/RF-nRF24L01-7C3AED?style=flat-square)
-![GPS](https://img.shields.io/badge/GPS-16A34A?style=flat-square)
-![I2C](https://img.shields.io/badge/I%C2%B2C-0891B2?style=flat-square)
-![SPI](https://img.shields.io/badge/SPI-0891B2?style=flat-square)
-
+![Embedded Systems](https://img.shields.io/badge/Embedded%20Systems-455A64?style=flat-square)
+![Custom PID](https://img.shields.io/badge/Custom%20PID-2563EB?style=flat-square)
+![RF Communication](https://img.shields.io/badge/RF%20Communication-6D5DF6?style=flat-square)
+![GPS](https://img.shields.io/badge/GPS-2E7D32?style=flat-square)
+![I2C](https://img.shields.io/badge/I2C-607D8B?style=flat-square)
+![SPI](https://img.shields.io/badge/SPI-607D8B?style=flat-square)
 
 
 ## Project Overview
