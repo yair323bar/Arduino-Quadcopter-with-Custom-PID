@@ -3,7 +3,6 @@
 
 
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
-![C](https://img.shields.io/badge/C-555555?style=flat-square&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
 ![Embedded Systems](https://img.shields.io/badge/Embedded%20Systems-455A64?style=flat-square)
 ![Custom PID](https://img.shields.io/badge/Custom%20PID-2563EB?style=flat-square)
