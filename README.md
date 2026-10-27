@@ -1,16 +1,30 @@
+
 # Arduino Quadcopter with Custom PID Flight Stabilization
+
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
+![Embedded Systems](https://img.shields.io/badge/Embedded_Systems-555555?style=flat-square)
+![PID Control](https://img.shields.io/badge/PID_Control-2563EB?style=flat-square)
+![RF Communication](https://img.shields.io/badge/RF_Communication-8B5CF6?style=flat-square)
+![GPS](https://img.shields.io/badge/GPS-16A34A?style=flat-square)
+![I2C](https://img.shields.io/badge/I%C2%B2C-F97316?style=flat-square)
+![SPI](https://img.shields.io/badge/SPI-F97316?style=flat-square)
+![MPU6050](https://img.shields.io/badge/MPU6050-64748B?style=flat-square)
+![Brushless Motors](https://img.shields.io/badge/Brushless_Motors-475569?style=flat-square)
 
 ## Project Overview
 
-This project was developed in **2018 as part of the final project for a Practical Engineering Diploma in Electronics and Computers** 
+This project was developed in **2018 as part of the final project for a Practical Engineering Diploma in Electronics and Computers**.
 
 The goal was to design and build a quadcopter with a **custom-developed PID (Proportional–Integral–Derivative) flight stabilization system** and a dedicated wireless remote controller. The project involved integrating multiple Arduino microcontrollers, onboard sensors, wireless communication, and four brushless motors driven by ESCs.
 
 A central part of the work was **developing and implementing our own PID flight-control algorithm**, rather than relying on a pre-built flight controller.
 
-The work brought together mechanical assembly, electronic design, embedded programming and hands-on testing. We built the aircraft and its handheld controller, divided the onboard tasks between two Arduino boards, and developed and tuned the PID controller using physical test setups. 
+The work brought together mechanical assembly, electronic design, embedded programming and hands-on testing. We built the aircraft and its handheld controller, divided the onboard tasks between two Arduino boards, and developed and tuned the PID controller using physical test setups.
 
 ![Quadcopter mounted on the original stabilization test setup](assets/original-report-images/image51.png)
+
 *Our quadcopter on a stabilization test setup during development.*
 
 ## System architecture
@@ -25,7 +39,9 @@ flowchart TB
     M <--> L[LCD]
     M <--> R1[nRF24L01 radio]
   end
+
   R1 <-->|Wireless control and telemetry| R2[nRF24L01 radio]
+
   subgraph Drone[Quadcopter]
     R2 <--> N[Arduino Nano — flight controller]
     IMU[MPU6050 motion sensor] --> N
@@ -37,6 +53,7 @@ flowchart TB
 ```
 
 ![Quadcopter system architecture](assets/original-report-images/image10.png)
+
 *System block diagram showing the onboard controllers and their connections.*
 
 ## Custom PID stabilization and motor drive
@@ -51,9 +68,12 @@ MPU6050 → angle estimate → desired vs. measured angle → PID X / PID Y
                                four ESCs → four brushless motors
 ```
 
-The [Nano implementation](src/Drone_Nano_Master/Drone_Nano_Master.ino) contains `calculateError()`, `calculatePID()` and `setMotorSpeed()`. The PID calculation uses proportional, accumulated integral and derivative terms, with output limiting. The motor-mixing routine computes a separate command for each of the four motors. **The motors are not powered directly from Arduino pins:** the Nano sends control signals to **four ESCs**, one per brushless motor; the ESCs drive the motors using the aircraft power system.
+The [Nano implementation](src/Drone_Nano_Master/Drone_Nano_Master.ino) contains `calculateError()`, `calculatePID()` and `setMotorSpeed()`. The PID calculation uses proportional, accumulated integral and derivative terms, with output limiting. The motor-mixing routine computes a separate command for each of the four motors.
+
+**The motors are not powered directly from Arduino pins:** the Nano sends control signals to **four ESCs**, one per brushless motor; the ESCs drive the motors using the aircraft power system.
 
 ![Four-motor propulsion schematic](assets/original-report-images/image43.png)
+
 *Electrical connections between the controllers, ESCs, and motors.*
 
 We tuned the PID controller through several rounds of testing as we assembled the aircraft and added its onboard components. The tuning steps and tested gain values are described in [Experiments and testing](#experiments-and-testing).
@@ -70,18 +90,27 @@ We used the Uno to handle additional sensors and peripherals, including GPS and 
 
 ### Why two boards? I²C between Nano and Uno
 
-We configured the **Nano as the I²C master and the Uno as the I²C slave**. A wired connection lets the two onboard controllers exchange data without an extra radio module, helping us avoid unnecessary weight on the aircraft. The [Nano code](src/Drone_Nano_Master/Drone_Nano_Master.ino) and [Uno code](src/Drone_Uno_Slave/Drone_Uno_Slave.ino) show both sides of this connection.
+We configured the **Nano as the I²C master and the Uno as the I²C slave**.
+
+A wired connection lets the two onboard controllers exchange data without an extra radio module, helping us avoid unnecessary weight on the aircraft.
+
+The [Nano code](src/Drone_Nano_Master/Drone_Nano_Master.ino) and [Uno code](src/Drone_Uno_Slave/Drone_Uno_Slave.ino) show both sides of this connection.
 
 ## Custom wireless remote
 
 ### [Arduino Mega — wireless remote controller](src/Remote_Controller/Remote_Controller.ino)
 
-The handheld controller uses an **Arduino Mega**, **two joysticks** for flight commands, a **keypad** for user input, an **LCD** for displaying entered/received data, and an **nRF24L01** radio module for communicating with the quadcopter. We also designed the keypad and display interface for entering GPS coordinates and selecting flight modes.
+The handheld controller uses an **Arduino Mega**, **two joysticks** for flight commands, a **keypad** for user input, an **LCD** for displaying entered/received data, and an **nRF24L01** radio module for communicating with the quadcopter.
+
+We also designed the keypad and display interface for entering GPS coordinates and selecting flight modes.
 
 ![Custom-built handheld controller](assets/original-report-images/image50.png)
+
 *Our handheld controller with joysticks, keypad, and display.*
 
-The controller reads the user inputs, packages commands and sends them wirelessly to the aircraft; the radio link also supports information sent back to the remote for display. The nRF24L01 uses SPI to interface with its Arduino host.
+The controller reads the user inputs, packages commands and sends them wirelessly to the aircraft; the radio link also supports information sent back to the remote for display.
+
+The nRF24L01 uses SPI to interface with its Arduino host.
 
 ## Hardware and communications
 
@@ -94,23 +123,34 @@ The controller reads the user inputs, packages commands and sends them wirelessl
 | Position and environment | GPS, ultrasonic sensors, barometric pressure sensor | Additional onboard sensing and environmental measurements |
 | Handheld interface | 2 joysticks, keypad, LCD | Command entry and data display through Arduino Mega |
 
-We powered the propulsion system through the aircraft battery and ESCs, while the Arduino boards provided the control signals. The electrical diagrams show how the main components were connected.
+We powered the propulsion system through the aircraft battery and ESCs, while the Arduino boards provided the control signals.
+
+The electrical diagrams show how the main components were connected.
 
 ## Experiments and testing
 
 We tested the hardware and control software throughout development, using physical fixtures and measurements to refine the system:
 
 1. **PID test fixtures:** we built and revised physical rigs to constrain the aircraft while allowing it to tilt. Earlier fixtures restricted movement; a later setup enabled more useful stabilization tests.
+
 2. **PID tuning with changing mass:** initial tuning was performed with the motors, MPU6050 and Nano installed. Adding the GPS and other equipment changed the aircraft's behavior, prompting a new tuning process with the intended hardware installed.
-3. **Recorded gain trials:** we tested an early configuration with `P=7.15`, `I=3.4`, `D=2.45`, a later tuning outcome of `P=3`, `I=0.1`, `D=0.2`, and another configuration using `P=3.55`, `I=0.003`, `D=2.05`. The Nano code in this repository uses `P=3.55`, `I=0.003`, `D=2.05` values as its initial PID gains; the other values reflect separate tuning trials.
+
+3. **Recorded gain trials:** we tested an early configuration with `P=7.15`, `I=3.4`, `D=2.45`, a later tuning outcome of `P=3`, `I=0.1`, `D=0.2`, and another configuration using `P=3.55`, `I=0.003`, `D=2.05`.
+
+   The Nano code in this repository uses `P=3.55`, `I=0.003`, `D=2.05` values as its initial PID gains; the other values reflect separate tuning trials.
+
 4. **I²C / SPI observations:** we captured communication waveforms with test equipment and examined timing and signaling.
+
 5. **Ultrasonic sensor check:** we placed a sensor approximately 40 cm from a wall; we used the measured echo pulse to calculate about **40.1 cm**.
+
 6. **Keypad-controller test:** we examined the 74C922 keypad controller's timing circuitry with an oscilloscope.
 
 ![Stabilization test fixture](assets/original-report-images/image30.png)
+
 *One of the test fixtures we used while tuning the PID controller.*
 
 ![Oscilloscope measurement](assets/original-report-images/image25.png)
+
 *Oscilloscope measurement taken during our hardware tests.*
 
 ## Project gallery
@@ -145,3 +185,12 @@ Photos and diagrams from the build and testing process, including the aircraft, 
 </table>
 
 Additional photographs, circuit diagrams, flowcharts, and oscilloscope captures are available in the [project images folder](assets/original-report-images/).
+
+---
+
+## Author
+
+**Yair Bar**
+
+[![Email](https://img.shields.io/badge/Email-yair323bar%40gmail.com-C0392B?style=flat-square&labelColor=555555&logo=gmail&logoColor=white)](mailto:yair323bar@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yair_Bar-0A66C2?style=flat-square&labelColor=555555&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yair-bar-a1a818325/)
